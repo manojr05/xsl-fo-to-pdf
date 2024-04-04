@@ -1,12 +1,12 @@
 package com.apachefop.service.impl;
 
 import com.apachefop.service.FopService;
+import com.apachefop.utils.PdfToJpgConverter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ import javax.xml.transform.*;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
-import java.util.Map;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -63,6 +63,7 @@ public class FopServiceImpl implements FopService {
 
             // Get the generated PDF bytes
             byte[] pdfBytes = jpgOutputStream.toByteArray();
+            PdfToJpgConverter.convertPdfToJpg(pdfBytes);
 
             // Set HTTP headers
             HttpHeaders headers = new HttpHeaders();
