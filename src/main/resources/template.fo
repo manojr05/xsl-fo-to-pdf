@@ -1,0 +1,20 @@
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+    <fo:layout-master-set>
+        <fo:simple-page-master master-name="simple" page-width="8.5in" page-height="11in">
+            <fo:region-body margin="1in"/>
+        </fo:simple-page-master>
+    </fo:layout-master-set>
+    <fo:page-sequence master-reference="simple">
+        <fo:flow flow-name="xsl-region-body">
+            <fo:block text-align="center" font-size="20pt" font-weight="bold">
+                ${title}
+            </fo:block>
+            <fo:block text-align="center">
+                ${description}
+            </fo:block>
+            <fo:block text-align="center">
+                ${content}
+            </fo:block>
+        </fo:flow>
+    </fo:page-sequence>
+</fo:root>
